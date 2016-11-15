@@ -19,7 +19,7 @@ router.get('/login', function (req, res, next) {
     } else if (!req.session.user.activation) {
         res.redirect('/auth/activation');
     } else {
-        res.redirect('/');
+        res.redirect('/user');
     }
 });
 
@@ -62,7 +62,7 @@ router.post('/login/submit', function (req, res, next) {
                     req.session.user = user;
                     req.app.locals.user = user;
                     if (user.activation) {
-                        return res.redirect('/');
+                        return res.redirect('/report');
                     } else {
                         return res.redirect('/auth/activation');
                     }
@@ -79,7 +79,7 @@ router.post('/login/submit', function (req, res, next) {
                         req.session.user = user;
                         req.app.locals.user = user;
                         if (user.activation) {
-                            return res.redirect('/');
+                            return res.redirect('/report');
                         } else {
                             return res.redirect('auth/activation');
                         }
@@ -111,7 +111,7 @@ router.post('/activation/submit', function (req, res) {
             if (err) console.log(err);
             req.session.user = user;
             req.app.locals.user = user;
-            return res.redirect('/');
+            return res.redirect('/report');
         })
     })
 });
