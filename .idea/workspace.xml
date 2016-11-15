@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="abbcc9e2-28e7-4516-be44-e082f4847fdb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/pages/report.jade" afterPath="$PROJECT_DIR$/views/pages/report.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascripts/usercenter_adaptor.js" afterPath="$PROJECT_DIR$/public/javascripts/usercenter_adaptor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/pages/user.jade" afterPath="$PROJECT_DIR$/views/pages/user.jade" />
     </list>
     <ignored path="findCards.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -56,20 +57,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user.jade" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user.jade" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/pages/user.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+            <state relative-caret-position="-332">
+              <caret line="78" column="10" lean-forward="false" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="report.jade" pinned="false" current-in-tab="true">
+      <file leaf-file-name="report.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/pages/report.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
+            <state relative-caret-position="-167">
               <caret line="70" column="64" lean-forward="false" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
               <folding />
             </state>
@@ -91,8 +92,8 @@
       <file leaf-file-name="usercenter_adaptor.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/javascripts/usercenter_adaptor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-588">
-              <caret line="1" column="38" lean-forward="true" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+            <state relative-caret-position="313">
+              <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -170,8 +171,6 @@
         <option value="$PROJECT_DIR$/public/stylesheets/resources/navbar.sass" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/route.js" />
-        <option value="$PROJECT_DIR$/views/pages/user.jade" />
-        <option value="$PROJECT_DIR$/public/javascripts/usercenter_adaptor.js" />
         <option value="$PROJECT_DIR$/views/layout.jade" />
         <option value="$PROJECT_DIR$/routes/result.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/resources/public.sass" />
@@ -185,6 +184,8 @@
         <option value="$PROJECT_DIR$/public/stylesheets/resources/footer.sass" />
         <option value="$PROJECT_DIR$/public/javascripts/report_adaptor.js" />
         <option value="$PROJECT_DIR$/views/pages/report.jade" />
+        <option value="$PROJECT_DIR$/public/javascripts/usercenter_adaptor.js" />
+        <option value="$PROJECT_DIR$/views/pages/user.jade" />
       </list>
     </option>
   </component>
@@ -525,12 +526,12 @@
       <workItem from="1479189415147" duration="216000" />
       <workItem from="1479189764490" duration="9000" />
       <workItem from="1479191508947" duration="197000" />
-      <workItem from="1479191751238" duration="1536000" />
+      <workItem from="1479191751238" duration="2324000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221127000" />
+    <option name="totallyTimeSpent" value="221915000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -900,14 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/pages/user.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/pages/report-result.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
@@ -932,14 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/usercenter_adaptor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-588">
-          <caret line="1" column="38" lean-forward="true" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/javascripts/report_adaptor.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1108">
@@ -952,8 +937,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/pages/report.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
+        <state relative-caret-position="-167">
           <caret line="70" column="64" lean-forward="false" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/usercenter_adaptor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/user.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-332">
+          <caret line="78" column="10" lean-forward="false" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
           <folding />
         </state>
       </provider>

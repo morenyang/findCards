@@ -70,5 +70,51 @@ block script
             $(function () {
                 itemListAdaptor(1);
             });
+    script(type='text/javascript').
+        var nameChange = function () {
+            $("#user_name").addClass('hidden');
+            $("#name_change_sign").addClass('hidden');
+            document.getElementById("user_name_placeholder").innerHTML = document.getElementById("name-changer-template").innerHTML;
+            document.getElementById("name_changer").focus();
+        };
+        var nameChangeSubmit = function () {
+            var old_name = document.getElementById("user_name").innerHTML;
+            var reg = new RegExp(old_name, 'g');
+            var new_name = document.getElementById("name_changer").value;
+            if (new_name.length == 0 || new_name.length > 12) {
+                $("#name_changer").addClass('input-error');
+                return;
+            }
+            if (new_name === old_name) {
+                document.getElementById('user_name_placeholder').innerHTML = '';
+                $("#user_name").removeClass("hidden");
+                $("#name_change_sign").removeClass("hidden");
+                return;
+            }
+            var uid = document.getElementById("userid").innerHTML;
+            $.ajax({
+                url: '/api/user/changeUserName?username=#{user.username}',
+                type: 'POST',
+                dataType: 'json',
+                data: {uid: uid, name: new_name},
+                async: false,
+                cache: false,
+                success: function (response) {
+                    if (response.status) {
+                        document.getElementById('user_name').innerHTML = document.getElementById('user_name').innerHTML.replace(reg, new_name);
+                        document.getElementById('user_name_placeholder').innerHTML = '';
+                        document.getElementById('nav_username').innerHTML = new_name;
+                        $("#user_name").removeClass("hidden");
+                        $("#name_change_sign").removeClass("hidden");
+                        document.getElementById('user-profile-cards').innerHTML = document.getElementById('user-profile-cards').innerHTML.replace(reg, new_name);
+                        document.getElementById('name-changer-template').innerHTML = document.getElementById('name-changer-template').innerHTML.replace(reg, new_name);
+                        document.title = document.title.replace(reg, new_name);
+                    } else {
+                        window.location.reload();
+                    }
+                }
+            })
+        };
+
 
 
