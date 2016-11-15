@@ -1,0 +1,31 @@
+nav.navbar.findcards-navbar.theme_placeholder
+    .container
+        .navbar-header
+            a.navbar-brand.brand-text(href='/') findCards
+            .navbar-right
+                if user
+                    .dropdown.navbar-btn
+                        a.dropdown-toggle(data-toggle='dropdown' href='#')
+                            span.glyphicon.glyphicon-th-list
+                            label.nav-list-bar.hidden-xs 我的
+                            label.nav-list-bar.caret
+                        ul.dropdown-menu.user-operation-menu(role='menu')
+                            if(user.activation)
+                                li.disabled(role='presentation')
+                                    a.login-notice 当前登录
+                                        span.disabled= user.username
+                                    a.user-name-card.disabled#nav_username= user.name
+                            else
+                                li.disabled(role='presentation')
+                                    a.user-name-card= user.username
+                                li(role='presentation')
+                                    a(href='/auth/activation') 激活账号
+
+                            li.divider(role="presentation")
+                            li(role='presentation')
+                                a(href='/user/') 个人中心
+                            li(role='presentation')
+                                a(href='/auth/logout') 退出登录
+                else
+                    .login-block
+                        a.login-block-btn(href="/login") 登录

@@ -1,0 +1,35 @@
+extends ../layout
+block content
+    .container
+        .page-guide-bar
+            h2.title#guide-bar-title 选择一项以继续
+        .row.findcards-report-guide
+            a(href='/report/lose').col-sm-6.col-xs-12.guide-card
+                .layout
+                    .guide-card-content
+                        .brand
+                            span.glyphicon.glyphicon-credit-card
+                        .text
+                            h1 我丢失了卡片
+            a(href='/report/pick').col-sm-6.col-xs-12.guide-card
+                .layout
+                    .guide-card-content
+                        .brand
+                            span.glyphicon.glyphicon-user
+                        .text
+                            h1 我拾到了卡片
+
+block script
+    script(type='text/javascript').
+        $(function () {
+            $('.guide-card')
+            .on({mouseenter: function (e) {
+                $(this).addClass('guide-card-hover');
+                $('.guide-card').not($(this)).addClass('guide-card-ignore');
+                $('#guide-bar-title').addClass('ignore');
+            }, mouseleave: function (e) {
+                $('.guide-card-hover').removeClass('guide-card-hover');
+                $('.guide-card-ignore').removeClass('guide-card-ignore');
+                $('#guide-bar-title').removeClass('ignore');
+            }})
+        });

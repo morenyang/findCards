@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    include ./public/head
+    block head
+
+  body
+    include ./public/navbar
+    block content
+
+    include ./public/footer
+    script(src="/javascripts/jquery.min.js")
+    script(src="/javascripts/bootstrap.min.js")
+    block script

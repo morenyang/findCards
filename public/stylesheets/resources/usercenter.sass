@@ -1,0 +1,258 @@
+@import "public"
+
+.findcards-user-center
+  margin-top: 25px
+
+.user-info-sidebar
+  margin-top: 15px
+  color: #333
+  margin-bottom: 5px
+  z-index: 998
+  .name-card
+    .name
+      margin: 20px 0 10px
+      font-size: 24px
+      font-weight: 600
+      &:hover
+        #name_change_sign
+          display: table
+    .username
+      color: rgba(0, 0, 0, .56)
+      font-size: 18px
+      font-weight: 400
+      margin: 5px 0 10px
+    #name_change_sign
+      @extend .btn-template
+      float: right
+      font-size: 12px
+      display: none
+      cursor: pointer
+      padding: 4px 8px
+      border: 1px solid rgba(0, 0, 0, .26)
+      color: rgba(0, 0, 0, .36)
+      text-decoration: none
+      &:focus, &:hover
+        box-shadow: none !important
+        -webkit-box-shadow: none !important
+        -moz-box-shadow: none !important
+        outline: none
+        color: rgba(0, 0, 0, .56)
+        border-color: rgba(0, 0, 0, .56)
+      @media screen and (max-width: 989px)
+        display: table
+        float: left
+        margin: 5px 0
+      @media screen and (max-width: 767px)
+        float: right
+        display: table-cell
+    .input-group
+      margin: 20px 0 10px
+    #btn-submit
+      height: 40px
+      border-radius: 0 2px 2px 0
+      @media screen and (min-width: 990px)
+        width: 0
+        display: block
+        visibility: hidden
+    .name_changer
+      box-shadow: none
+      -webkit-box-shadow: none
+      font-size: 16px
+      font-weight: 400
+      padding: 6px 12px
+      height: 40px
+      border-radius: 2px 0 0 2px
+      width: 100%
+      &.input-error
+        border-color: #ac2925
+
+.user-profile-card
+  margin-top: 5px
+  .user-profile-nav
+    display: table
+    width: 100%
+    height: 60px
+    border-bottom: 1px solid #ccc
+    .user-profile-nav-item
+      color: #333
+      text-decoration: none
+      display: table-cell
+      float: left
+      margin-top: 15px
+      margin-bottom: -1px
+      padding: 20px 20px 15px
+      line-height: 20px
+      font-size: 14px
+      @media screen and (max-width: 767px)
+        padding: 20px 10px 15px
+      .counter
+        display: inline-block
+        margin-left: 5px
+        margin-top: 1px
+        padding: 3px 8px
+        font-size: 12px
+        font-weight: 600
+        line-height: 1
+        vertical-align: top
+        color: rgba(0, 0, 0, .56)
+        background-color: #eee
+        border-radius: 10px
+        @media screen and (max-width: 767px)
+          display: none
+      &.active
+        border-bottom: 2px solid $theme-blue
+        @media screen and (max-width: 767px)
+          .counter
+            display: inline-block
+
+  .user-profile-cards-list
+    .item-card
+      margin: 10px -5px
+      padding: 10px 0
+      border-bottom: 1px solid rgba(0, 0, 0, .16)
+      .item-card-right
+        .layout
+          display: table
+          float: right
+          margin-right: 30px
+          @media screen and (max-width: 989px)
+            margin-right: 10px
+          @media screen and (max-width: 767px)
+            float: left
+          .item-card-reportid
+            color: rgba(0, 0, 0, .16)
+            font-weight: 200
+            font-size: 16px
+            text-align: right
+            margin: 0
+            &:before
+              content: 'No.'
+            @media screen and (max-width: 767px)
+              text-align: left
+              font-size: 13px
+              display: table
+              float: right
+              line-height: 20px
+              vertical-align: bottom
+              margin: 0 0 5px
+              &:before
+                content: '/  No.'
+          .item-card-reportstatus
+            color: rgba(0, 0, 0, .38)
+            font-weight: 200
+            font-size: 44px
+            @media screen and (max-width: 767px)
+              text-align: left
+              font-size: 18px
+              line-height: 20px
+              margin: 0 5px 5px 0
+              vertical-align: bottom
+              float: left
+              display: table
+      .item-card-left
+        .item-card-title-bar *
+          margin: 0 0 10px
+          font-size: 20px
+          color: $theme-blue
+          &:hover
+            color: $theme-blue
+          &.type
+            font-weight: 600
+          &.date
+            font-weight: 400
+            &:before
+              content: ' / '
+        .item-card-info-bar
+          margin-top: 15px
+          color: rgba(0, 0, 0, .56)
+          *
+            margin: 5px 0
+          h4
+            font-size: 18px
+            .cardno + .studentno
+              &:before
+                content: ' / '
+          h5
+            font-size: 14px
+            line-height: 1.1
+            font-weight: 400
+            &.picker-name:before
+              content: '拾卡 / '
+            &.loser-name:before
+              content: '丢卡 / '
+
+        .item-card-footer
+          font-size: 13px
+          margin-top: 15px
+          color: rgba(0, 0, 0, .56)
+  .user-profile-cards-list-refresher
+    width: 100%
+    margin: 20px 0
+    .layout
+      display: table
+      margin: 0 auto
+      width: 100%
+      .btn-getmore
+        @extend .btn-template
+        width: 100%
+        color: rgba(0, 0, 0, .56)
+        background-color: #ffffff
+        border: 1px solid rgba(0, 0, 0, .1)
+        padding: 6px 15px
+        outline: none
+        &:hover
+          background-color: #f9f9f9
+    .loading-sign
+      display: table
+      margin: 0 auto
+      $width: 20px
+      .text
+        font-size: 16px
+        float: right
+        line-height: 20px
+        vertical-align: middle
+        color: rgba(0, 0, 0, .56)
+      .loader
+        position: relative
+        margin: 0 5px 0 0
+        width: $width
+        display: table
+        float: left
+        &:before
+          content: ''
+          display: block
+          padding-top: 100%
+        .circular
+          animation: rotate 2s linear infinite
+          height: 100%
+          transform-origin: center center
+          width: 100%
+          position: absolute
+          top: 0
+          bottom: 0
+          left: 0
+          right: 0
+          margin: auto
+        .path
+          stroke-dasharray: 1, 200
+          stroke-dashoffset: 0
+          animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite
+          stroke-linecap: round
+        @keyframes rotate
+          100%
+            transform: rotate(360deg)
+        @keyframes dash
+          0%
+            stroke-dasharray: 1, 200
+            stroke-dashoffset: 0
+          50%
+            stroke-dasharray: 89, 200
+            stroke-dashoffset: -35px
+          100%
+            stroke-dasharray: 89, 200
+            stroke-dashoffset: -124px
+        @keyframes color
+          100%, 0%
+            stroke: #ccc
+
+

@@ -1,0 +1,46 @@
+//
+   Created by MorenYang on 2016/11/9.
+extends ../layout
+block content
+    .container
+        .page-guide-bar
+            h2.title.large#guide-bar-title= report.status
+                span.explain= report.reportid
+        .row.findcards-result
+            .col-sm-8.col-xs-12.col-sm-push-4.sidebar-card
+                .card-view
+                    .card
+                        .card-info
+                            .ci-title
+                                span findCards
+                            .ci-cardno
+                                span#cardview-no= report.cardNo
+                            .ci-studentname
+                                span.title#ci-name-title 姓名：
+                                span#cardview-name= report.studentName
+                            .ci-studentno
+                                span.title#ci-sno-title 学号：
+                                span#cardview-sno= report.studentNo
+            .col-sm-4.col-xs-12.col-sm-pull-8.info-side-bar
+                .info-card
+                    .title-bar.small
+                        h2.title 卡片信息
+                    .info-content.card-info
+                        p#cardno= report.cardNo
+                        p#studentname= report.studentName
+                        p#studentno= report.studentNo
+                    .title-bar.small
+                        h2.title 拾卡者留下的信息
+                    .info-content.picker-info
+                        p#picker_name #{picker.reporterName}
+                        p#picker_phone #{picker.phone}
+                        p#picker_wechat #{picker.weChat}
+                        p#picker_report_at #{picker.reportAt}
+                    .title-bar.small
+                        h2.title 丢卡者留下的信息
+                    .info-content.loser-info
+                        p#loser_name #{loser.reporterName}
+                        p#loser_phone #{loser.phone}
+                        p#loser_wechat  #{loser.weChat}
+                        p#loser_report_at #{loser.reportAt}
+                    a.btn.next-btn#btn-next(type='button', href='/user') 完成

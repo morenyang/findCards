@@ -1,0 +1,74 @@
+extends ../layout
+block content
+    .findcards-user-center
+        .container
+            .row
+                .col-sm-3.col-xs-12.user-info-sidebar
+                    .name-card
+                        h2.name
+                            span#user_name #{user.name}
+                            a#name_change_sign(type='button',onclick="nameChange()", href='#')
+                                span.glyphicon.glyphicon-pencil
+                                | 修改名字
+                        #user_name_placeholder
+                        h3.username= user.username
+                    .info-card
+                        p.join-time 加入于 #{joinDate}
+                .col-sm-9.com-xs-12.user-profile-card
+                    nav.user-profile-nav
+                        a(href='/user', role='tab', class= {active: (!tab || tab == 'default')}).user-profile-nav-item
+                            | 全部记录
+                            span.counter= count.total
+                        a(href='/user?tab=pick', role='tab', class= {active: tab == 'pick'}).user-profile-nav-item
+                            | 捡到的卡
+                            span.counter= count.pick
+                        a(href='/user?tab=lose', role='tab', class= {active: tab == 'lose'}).user-profile-nav-item
+                            | 丢失的卡
+                            span.counter= count.lose
+                    if(!tab || tab == 'default' || tab == 'pick' || tab == 'lose')
+                        .user-profile-cards-list#user-profile-cards
+                        .user-profile-cards-list-refresher#user-profile-cards-refresher
+                            .layout
+                                button.btn-getmore#refresher-btn(onclick="getMoreReports()") 载入更多
+                            .loading-sign#loadingSign
+
+block script
+    script#user-profile-card-template(type="text/x-custom-template")
+        .user-profile-cards-list#user-profile-cards
+            .item-card.row(id='report_%reportid%' ,fc-reportid='%reportid%')
+                .col-sm-4.col-sm-push-8.col-xs-12.item-card-right
+                    .layout
+                        h3.item-card-reportid %reportid%
+                        h2.item-card-reportstatus %reportstatus%
+                .col-sm-8.col-sm-pull-4.col-xs-12.item-card-left
+                    a(href='/card/%reportid%').item-card-title-bar
+                        span.type %user-report-type%
+                        span.date %user-report-at%
+                    .item-card-info-bar
+                        h4
+                            span(class='%class-for-cardno%') %cardno%
+                            span(class='%class-for-studentno%') %studentno%
+                        h5.picker-name %picker-name%
+                        h5.loser-name %loser-name%
+                    .item-card-footer
+                        p 最后更新于 %update-at%
+    script#loading-sign-template(type = "text/x-custom-template")
+        .loader
+            svg.circular(viewBox="25 25 50 50")
+                circle.path(cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10")
+        .text
+            p 正在载入
+    script#userid(type='text')= user._id
+    script#name-changer-template(type = "text/x-custom-template")
+        .input-group
+            input.name_changer#name_changer.form-control(value=user.name, onblur="nameChangeSubmit()", maxlength="25")
+            span.input-group-btn
+                button.btn.btn-success#btn-submit(onclick="") 提交
+    script(type='text/javascript', src='/javascripts/usercenter_adaptor.js')
+    if(!tab || tab == 'default' || tab == 'pick' || tab == 'lose')
+        script(type='text/javascript').
+            $(function () {
+                itemListAdaptor(1);
+            });
+
+

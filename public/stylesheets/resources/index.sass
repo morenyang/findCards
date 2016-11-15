@@ -1,0 +1,99 @@
+@import "public"
+.findcards-index, .findcards-activation
+  .layout
+    padding: 20px 80px 0
+    @media screen and (min-width: 1440px) and (min-height: 900px)
+      padding-top: 18vh
+    @media screen and (max-width: 767px)
+      padding: 0
+
+.poster-card
+  h1, h2, h3, h4, h5, h6
+    font-weight: 400
+    font-family: 'PingFang SC', 'HanHei SC', Helvetica, Arial, sans-serif
+    opacity: 1
+    @media screen and (max-width: 767px)
+      margin-top: 10vh
+  .poster-title
+    font-family: 'PingFang SC', 'HanHei SC', 'Microsoft YaHei UI Light', 'Microsoft YaHei', Helvetica, Arial, sans-serif
+    font-size: 96px
+    line-height: 1.125
+    font-weight: 100
+    margin-bottom: 5px
+    @media screen and (max-width: 767px)
+      font-size: 64px
+      font-weight: 200
+    &.small
+      font-size: 80px
+  .poster-title.small
+    @media screen and (max-width: 767px)
+      margin-top: 36px
+      font-size: 56px
+  .poster-slogan
+    font-weight: 400
+    margin: 0
+    @media screen and (max-width: 767px)
+      font-size: 20px
+      font-weight: 700
+  .poster-describe
+    margin: 20px 0
+    line-height: 1.25
+    font-weight: 200
+    @media screen and (max-width: 767px)
+      font-size: 16px
+      margin: 10px 0
+      font-weight: 400
+
+.guide-btn
+  @extend .btn-template
+  padding: 4px 18px
+  font-size: 18px
+  font-weight: 400
+  line-height: 36px
+  background-color: $theme-blue-light
+  border-color: $theme-blue-light
+  color: white
+  @extend .transform-template
+  &:hover, &:focus
+    color: white
+    background-color: $theme-blue
+    border-color: $theme-blue
+    box-shadow: 2px 2px .5px .5px rgba(15, 29, 51, .26)
+  .btn-icon-larger
+    margin-left: 5px
+    font-size: 24px
+    line-height: 36px
+    vertical-align: middle
+
+@mixin scrollup-transform-template($time-waiting)
+  -webkit-transform: translate3d(0px, -20px, 0px)
+  transform: translate3d(0px, -20px, 0px)
+  -webkit-transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1) $time-waiting, -webkit-transform 1s cubic-bezier(0.165, 0.84, 0.44, 1) $time-waiting
+  transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1) $time-waiting, transform 1s cubic-bezier(0.165, 0.84, 0.44, 1) $time-waiting
+  opacity: 1
+
+// private
+.findcards-index
+  .ready
+    opacity: 0
+  .poster-card
+    .poster-title.trans-active
+      @include scrollup-transform-template(0.2s)
+    .poster-slogan.trans-active
+      @include scrollup-transform-template(0.4s)
+    .poster-describe.trans-active
+      @include scrollup-transform-template(0.6s)
+    .guide-btn.trans-active
+      @include scrollup-transform-template(0.8s)
+  .findcards-navbar, .findcards-footer
+    &.theme_placeholder
+      opacity: 0
+    &.trans-active
+      -webkit-transform: translate3d(0px, 0px, 0px)
+      transform: translate3d(0px, 0px, 0px)
+      -webkit-transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1) 1.2s, -webkit-transform 1s cubic-bezier(0.165, 0.84, 0.44, 1) 15s
+      transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1) 1.8s, transform 1s cubic-bezier(0.165, 0.84, 0.44, 1) 1.8s
+      opacity: 1
+  .findcards-footer
+    @media screen and (min-width: 768px)
+      margin-top: 30px

@@ -1,0 +1,52 @@
+doctype html
+html
+    head
+        include ../public/head
+
+body.findcards-activation
+    include ../public/navbar
+
+    .container
+        .poster-card
+            h1.poster-title.small 还差一步
+            h2.poster-slogan 请先激活你的账户
+                span.user-name-sign #{user.username}
+        .activation-card
+            .brand
+                .brand-text
+                    h1 输入一个你喜欢的名字
+            .alert-card#alert-card
+            .input-card
+                form(method="POST", action="/auth/activation/submit" onsubmit='return formSubmit()')
+                    .hidden
+                        label(for='username') 用户名
+                        input.form-control#username(name='username', tabindex='1', type='text' value= username)
+                    .input-group
+                        label.hidden(for='name')
+                        input.form-control#name(name='name', tabindex='2', type='text',placeholder="你的名字或昵称，不建议超过8个字")
+                        span.input-group-btn
+                            button.btn.btn-success#btn-submit(type='submit') 提交
+
+    include ../public/footer
+    script#alert-template(type="text/x-custom-template")
+        .alert.alert-danger.alert-dismissible(role="alert") %alert-message%
+            button.close(type="button" data-dismiss="alert")
+                span(alert-hidden="true") &times;
+    script(src="/javascripts/jquery.min.js")
+    script(src="/javascripts/bootstrap.min.js")
+    script(type="text/javascript").
+        var formSubmit = function () {
+            document.getElementById('alert-card').innerHTML = '';
+            if(document.getElementById('username').value.length == 0 ){
+                window.location.reload();
+            }
+            if (document.getElementById('name').value.length == 0 || document.getElementById('name').value.length > 12) {
+                var template = document.getElementById('alert-template').innerHTML;
+                var content = template.replace(/%alert-message%/, "名字格式错误");
+                document.getElementById('alert-card').innerHTML = content;
+                return false;
+            }
+            $("#btn-submit").attr("disabled", true);
+            $("#form-login").submit();
+            return true
+        };

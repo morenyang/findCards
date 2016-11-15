@@ -1,0 +1,315 @@
+@import "public"
+@import "index"
+
+.page-guide-bar
+  .title
+    font-weight: 200
+    margin: 0 -5px 20px
+    padding: 0 5px 10px
+    border-bottom: 1px solid rgba(0, 0, 0, .1)
+    font-size: 38px
+    color: #555
+    @extend .transform-template
+    @media screen and (min-width: 1440px) and (min-height: 900px)
+      padding-top: 50px
+    @media screen and (max-width: 767px)
+      font-weight: 400
+      font-size: 26px
+    &.large
+      font-size: 44px
+      @media screen and (max-width: 767px)
+        font-size: 30px
+    .explain
+      color: rgba(0,0,0,.38)
+      font-size: 50%
+      margin-left: 10px
+      &:before
+        content: '/ No.'
+  .ignore
+    color: rgba(0, 0, 0, .2) !important
+
+.findcards-report-guide
+  padding: 0 15px 20px
+  @media screen and (max-width: 767px)
+    padding: 0 15px
+  @media screen and (min-width: 1440px)
+    padding: 15vh 15px
+  .guide-card
+    color: #666
+    text-decoration: none
+    @extend .transform-template
+    &:hover, &:focus
+      background-color: rgba(0, 0, 0, .06)
+      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .11)
+      -webkid-box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .11)
+      color: #222
+  .guide-card-ignore
+    color: rgba(0, 0, 0, .2) !important
+  .layout
+    .guide-card-content
+      display: table
+      margin: 100px auto
+      @media screen and (max-width: 767px)
+        margin: 55px auto
+      .brand
+        margin: auto
+        display: table
+        span
+          margin: auto
+          font-size: 64px
+          @media screen and (max-width: 767px)
+            font-size: 52px
+          @media screen and (min-width: 1440px)
+            font-size: 96px
+      .text
+        h1
+          margin: 0
+          text-align: center
+          font-weight: 400
+          font-size: 34px
+          @media screen and (max-width: 767px)
+            font-size: 30px
+          @media screen and (min-width: 1440px)
+            font-size: 56px
+
+.findcards-report, .findcards-result
+  .input-card
+    form
+      input, button
+        border-radius: 2px
+        height: 40px
+        width: 100%
+        margin: 10px 0
+      label + input
+        margin: 0 0 10px
+        & + label + input
+          margin: 10px 0
+      input, input:hover, input:focus
+        font-size: 16px
+        padding: 6px 12px
+        box-shadow: none
+        -webkit-box-shadow: none
+        $time: 0.2s
+        transition: all $time ease-in-out 0s
+        -webkit-transition: all $time ease-in-out 0s
+        -moz-transition: all $time ease-in-out 0s
+        &.input-complete
+          border-color: rgba(0, 0, 0, 0)
+          padding: 0
+          font-size: 18px
+          margin: 0
+          &#cardno
+            font-size: 24px
+            font-weight: 600
+        &.input-error
+          border-color: #ac2925
+      input[readonly]
+        background-color: rgba(0, 0, 0, 0) !important
+      button
+        padding: 8px 18px
+        border-left: 0
+  .alert-card
+    width: 100%
+    display: table
+    &.notice
+      margin: 10px 0 20px
+      .alert
+        font-size: 13px
+        .alert-title
+          font-size: 15px
+    .alert
+      padding: 8px 10px
+      border-radius: 2px
+      margin-bottom: 10px
+      .alert-title
+        font-weight: 600
+        font-size: 16px
+    .alert-dismissible .close
+      right: 5px
+    .card-message.protocol
+      color: #aaa
+      font-weight: 400
+      margin: 20px 0 -5px
+      font-size: 13px
+  .sidebar-card
+    padding: 0 60px
+    @media screen and (max-width: 767px)
+      padding: 10px 15px
+
+.findcards-result
+  .sidebar-card
+    padding-top: 50px
+    @media screen and (max-width: 767px)
+      padding-top: 0
+
+  .info-side-bar
+    .info-card
+      margin-bottom: 40px
+      .title-bar
+        margin: 10px 0 5px
+        padding: 5px 10px 8px
+        border-bottom: 1px solid rgba(0, 0, 0, .26)
+        &.small
+          margin: 0
+          padding: 0 5px 5px
+          .title
+            font-size: 16px
+        .title
+          margin: 0
+          font-size: 20px
+          line-height: 1
+          font-weight: 400
+          color: rgba(0, 0, 0, .56px)
+
+      .info-content
+        padding: 5px
+        font-size: 18px
+        & + .title-bar
+          margin-top: 10px
+        @media screen and (max-width: 991px)
+          font-size: 16px
+        & > *
+          -moz-user-select: none
+          -webkit-user-select: none
+          -ms-user-select: none
+          -khtml-user-select: none
+          user-select: none
+          cursor: default
+          &:before
+            color: rgba(0, 0, 0, .36) !important
+            margin-right: 15px !important
+            font-size: 13px !important
+        #cardno
+          font-size: 24px
+          @media screen and (max-width: 1199px)
+            font-size: 20px
+          @media screen and (max-width: 991px)
+            font-size: 18px
+          &:before
+            content: '卡号'
+        #studentname
+          &:before
+            content: '姓名'
+        #studentno
+          &:before
+            content: '学号'
+      .your-info
+        #name
+          &:before
+            content: '你的名字'
+        #phone
+          &:before
+            content: '你的电话'
+        #wechat
+          &:before
+            content: '你的微信'
+      .other-info
+        #name
+          &:before
+            content: '对方名字'
+        #phone
+          &:before
+            content: '对方电话'
+        #wechat
+          &:before
+            content: '对方微信'
+      .picker-info
+        #picker_name
+          &:before
+            content: '名字'
+        #picker_phone
+          &:before
+            content: '电话'
+        #picker_wechat
+          &:before
+            content: '微信'
+        #picker_report_at
+          &:before
+            content: '时间'
+
+      .loser-info
+        #loser_name
+          &:before
+            content: '名字'
+        #loser_phone
+          &:before
+            content: '电话'
+        #loser_wechat
+          &:before
+            content: '微信'
+        #loser_report_at
+          &:before
+            content: '时间'
+      .next-btn
+        @extend .guide-btn
+        font-size: 16px
+        line-height: 22px
+        margin-left: 5px
+        padding: 6px 20px
+        &:hover
+          box-shadow: none
+          -webkit-box-shadow: none
+          -moz-box-shadow: none
+        @media screen and (max-width: 767px)
+          width: 100%
+          display: block
+          margin-left: 0
+
+.card-view
+  .card
+    border: 2px solid rgba(0, 0, 0, .36)
+    border-radius: 18px
+    margin: 5px auto
+    height: 250px
+    width: 400px
+    padding: 35px 30px 0
+    $time: 0.3s
+    transition: all $time ease-in-out .1s
+    -webkit-transition: all $time ease-in-out .1s
+    -moz-transition: all $time ease-in-out .1s
+    &.display-hidden
+      border-color: rgba(0, 0, 0, 0)
+      color: rgba(0, 0, 0, 0) !important
+      .ci-title
+        color: rgba(0, 0, 0, 0) !important
+    @media screen and (max-width: 767px)
+      width: 100%
+      height: 55vw
+      padding: 6vw 15px 0
+    .card-info
+      -moz-user-select: none
+      -webkit-user-select: none
+      -ms-user-select: none
+      user-select: none
+      cursor: default
+      .ci-title
+        font-size: 58px
+        font-weight: 100
+        line-height: 60px
+        margin-bottom: 40px
+        color: rgba(0, 0, 0, .26)
+        $time: 0.3s
+        transition: all $time ease-in-out .1s
+        -webkit-transition: all $time ease-in-out .1s
+        -moz-transition: all $time ease-in-out .1s
+        @media screen and (max-width: 767px)
+          font-size: 13vw
+          line-height: 14vw
+          margin-bottom: 10vw
+      .ci-cardno
+        font-size: 26px
+        font-weight: 600
+        line-height: 36px
+        min-height: 36px
+        @media screen and (max-width: 767px)
+          font-size: 6vw
+          line-height: 1.35
+          min-height: 8.1vw
+      .ci-studentname, .ci-studentno
+        font-size: 15px
+      .ci-info-error
+        color: #ac2925
+
+
+
+

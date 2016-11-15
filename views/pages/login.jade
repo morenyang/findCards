@@ -1,0 +1,57 @@
+doctype html
+html
+    head
+        include ../public/head
+
+body.findcards-login
+    .place-holder
+    .main
+        .layout
+            .banner
+                .banner-text
+                    a.banner-link(href='/')
+                        h1 findCards
+                    h3.banner-text-small 使用你的学号和教务系统密码登录
+            .alert-card#alert-card
+                if alert
+                    .alert.alert-danger.alert-dismissible(role="alert") #{alert}
+                        button.close(type="button" data-dismiss="alert")
+                            span(alert-hidden="true") &times;
+                else
+            .login-card
+                .input-card
+                    form#form-login(method="POST", action="/auth/login/submit" onsubmit='return formSubmit()')
+                        label(for='username') 用户名
+                        if(username)
+                            input.form-control#username(name='username', tabindex='1', type='text', value='#{username}')
+                        else
+                            input.form-control#username(name='username', tabindex='1', type='text')
+                        label(for='password') 密码
+                            a.table-link(href="http://es.bnuz.edu.cn/") 忘记密码?
+                        input.form-control#password(name='password', tabindex='2', type='password')
+                        button.btn.btn-success.signin-btn#btn-submit(type='submit') 登录
+
+    include ../public/footer
+    script#alert-template(type="text/x-custom-template")
+        .alert.alert-danger.alert-dismissible(role="alert") %alert-message%
+            button.close(type="button" data-dismiss="alert")
+                span(alert-hidden="true") &times;
+    script(src="/javascripts/jquery.min.js")
+    script(src="/javascripts/bootstrap.min.js")
+    script(type="text/javascript").
+        var formSubmit = function () {
+            document.getElementById('alert-card').innerHTML = '';
+            if (document.getElementById('username').value.length == 0 || document.getElementById('password').value.length == 0) {
+                var template = document.getElementById('alert-template').innerHTML;
+                var content = template.replace(/%alert-message%/, "用户名或密码不能为空");
+                document.getElementById('alert-card').innerHTML = content;
+                return false;
+            }
+            $("#btn-submit").attr("disabled", true);
+            $("#btn-submit").html("正在登录...");
+            return true
+        };
+    script#loading-sign-template(type = "text/x-custom-template")
+        .loader
+            svg.circular(viewBox="25 25 50 50")
+                circle.path(cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10")/
