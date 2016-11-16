@@ -71,6 +71,20 @@ block script
                     document.getElementById('alert-card').innerHTML = content;
                     return false;
                 }
+                if (document.getElementById('studentno').value.length != 0) {
+                    if (!idReg.test(document.getElementById('studentno').value)) {
+                        var template = document.getElementById('alert-template').innerHTML;
+                        var content = template.replace(/%alert-message%/, "请正确填写表单");
+                        document.getElementById('alert-card').innerHTML = content;
+                        return false;
+                    }
+                }
+                if (!(cardNoReg.test(document.getElementById('cardno').value) && phoneReg.test(document.getElementById('phone').value))) {
+                    var template = document.getElementById('alert-template').innerHTML;
+                    var content = template.replace(/%alert-message%/, "请正确填写表单");
+                    document.getElementById('alert-card').innerHTML = content;
+                    return false;
+                }
                 $("#btn-submit").attr("disabled", true);
                 $("#btn-submit").html("正在提交...");
                 $("#form-login").submit();
@@ -85,6 +99,28 @@ block script
                     var content = template.replace(/%alert-message%/, "请填入所有必填项");
                     document.getElementById('alert-card').innerHTML = content;
                     return false;
+                }
+                if (document.getElementById('cardno').value != 0) {
+                    if (!(cardNoReg.test(document.getElementById('cardno').value))) {
+                        var template = document.getElementById('alert-template').innerHTML;
+                        var content = template.replace(/%alert-message%/, "请正确填写表单");
+                        document.getElementById('alert-card').innerHTML = content;
+                        return false;
+                    }
+                }
+                if (!phoneReg.test(document.getElementById('phone').value)) {
+                    var template = document.getElementById('alert-template').innerHTML;
+                    var content = template.replace(/%alert-message%/, "请正确填写表单");
+                    document.getElementById('alert-card').innerHTML = content;
+                    return false;
+                }
+                if (document.getElementById('studentno').value.length != 0) {
+                    if (!idReg.test(document.getElementById('studentno').value)) {
+                        var template = document.getElementById('alert-template').innerHTML;
+                        var content = template.replace(/%alert-message%/, "请正确填写表单");
+                        document.getElementById('alert-card').innerHTML = content;
+                        return false;
+                    }
                 }
                 $("#btn-submit").attr("disabled", true);
                 $("#btn-submit").html("正在提交...");
