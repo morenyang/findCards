@@ -10,6 +10,7 @@ var report = require('./routes/report');
 var result = require('./routes/result');
 var user = require('./routes/user');
 var card = require('./routes/card');
+var policies = require('./routes/policies')
 
 var route = function (app) {
     app.use(function (req, res, next) {
@@ -23,6 +24,7 @@ var route = function (app) {
     });
 
     app.use('/', routes);
+    app.use('/policies', policies);
     app.use('/users', users);
     app.use('/login', auth);
     app.use('/auth', auth);

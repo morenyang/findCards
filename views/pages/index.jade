@@ -4,17 +4,18 @@ html(lang="zh-cn")
         include ../public/head
 
 body.findcards-index
-    include ../public/navbar
+    .index_view_page
+        include ../public/navbar
 
-    .container
-        .layout
-            .poster-card
-                h1.poster-title.ready findCards
-                h2.poster-slogan.ready 帮你找到丢失的校园卡或卡片的失主
-                h3.poster-describe.ready 不小心丢失了校园卡？<br>或是捡到了别人遗失的校园卡？<br>动动手指，输入信息<br>试试能不能找到你正寻找的那个人
-                a.btn.guide-btn.ready(href='/report') 开始吧
-                    span.btn-icon-larger &raquo;
-    include ../public/footer
+        .container
+            .layout
+                .poster-card
+                    h1.poster-title.ready findCards
+                    h2.poster-slogan.ready 帮你找到丢失的校园卡或卡片的失主
+                    h3.poster-describe.ready 不小心丢失了校园卡？<br>或是捡到了别人遗失的校园卡？<br>动动手指，输入信息<br>试试能不能找到你正寻找的那个人
+                    a.btn.guide-btn.ready(href='/report') 开始吧
+                        span.btn-icon-larger &raquo;
+        include ../public/footer
 
     script(src="/javascripts/jquery.min.js")
     script(src="/javascripts/bootstrap.min.js")

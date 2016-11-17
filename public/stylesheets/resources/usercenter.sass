@@ -1,7 +1,10 @@
 @import "public"
-
 .findcards-user-center
-  margin-top: 25px
+  footer.theme_placeholder #footer_normal
+    @media screen and (min-width: 768px)
+      display: none !important
+  &>.user-center-layout
+    margin-top: 25px
 
 .user-info-sidebar
   margin-top: 15px
@@ -65,9 +68,45 @@
       width: 100%
       &.input-error
         border-color: #ac2925
+  .sidebar-nav
+    margin: 15px 15px 15px -5px
+    list-style: none
+    background-color: #fff
+    border: 1px solid #d8d8d8
+    border-radius: 3px
+    *
+      &:hover
+        background-color: rgba(0, 0, 0, 0)
+    li a
+      color: #333
+      text-decoration: none
+      padding: 8px 15px
+      line-height: 20px
+      font-size: 14px
+      border-top: 1px solid rgba(0, 0, 0, .1)
+      border-left: 2px solid rgba(0, 0, 0, 0)
+      &.active
+        border-left-color: $theme-blue
+  .sidebar-footer
+    margin: 40px 0 !important
+
+.nav .counter, nav .counter
+  display: inline-block
+  margin-left: 5px
+  margin-top: 1px
+  padding: 3px 8px
+  font-size: 12px
+  font-weight: 600
+  line-height: 1
+  vertical-align: top
+  color: rgba(0, 0, 0, .56)
+  background-color: #eee
+  border-radius: 10px
+  @media screen and (max-width: 767px)
+    display: none
 
 .user-profile-card
-  margin-top: 5px
+  margin: 5px 0 15px
   .user-profile-nav
     display: table
     width: 100%
@@ -85,20 +124,6 @@
       font-size: 14px
       @media screen and (max-width: 767px)
         padding: 20px 10px 15px
-      .counter
-        display: inline-block
-        margin-left: 5px
-        margin-top: 1px
-        padding: 3px 8px
-        font-size: 12px
-        font-weight: 600
-        line-height: 1
-        vertical-align: top
-        color: rgba(0, 0, 0, .56)
-        background-color: #eee
-        border-radius: 10px
-        @media screen and (max-width: 767px)
-          display: none
       &.active
         border-bottom: 2px solid $theme-blue
         @media screen and (max-width: 767px)
@@ -163,7 +188,7 @@
             &:before
               content: ' / '
         .item-card-info-bar
-          margin-top: 15px
+          margin-top: 12px
           color: rgba(0, 0, 0, .56)
           *
             margin: 5px 0
@@ -174,7 +199,7 @@
                 content: ' / '
           h5
             font-size: 14px
-            line-height: 1.1
+            line-height: 1.05
             font-weight: 400
             &.picker-name:before
               content: '拾卡 / '
@@ -183,7 +208,7 @@
 
         .item-card-footer
           font-size: 13px
-          margin-top: 15px
+          margin-top: 12px
           color: rgba(0, 0, 0, .56)
   .user-profile-cards-list-refresher
     width: 100%

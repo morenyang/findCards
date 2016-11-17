@@ -1,36 +1,38 @@
 extends ../layout
 block content
-    .findcards-user-center
-        .container
-            .row
-                .col-sm-3.col-xs-12.user-info-sidebar
-                    .name-card
-                        h2.name
-                            span#user_name #{user.name}
-                            a#name_change_sign(type='button',onclick="nameChange()", href='#')
-                                span.glyphicon.glyphicon-pencil
-                                | 修改名字
-                        #user_name_placeholder
-                        h3.username= user.username
-                    .info-card
-                        p.join-time 加入于 #{joinDate}
-                .col-sm-9.com-xs-12.user-profile-card
-                    nav.user-profile-nav
-                        a(href='/user', role='tab', class= {active: (!tab || tab == 'default')}).user-profile-nav-item
-                            | 全部记录
-                            span.counter= count.total
-                        a(href='/user?tab=pick', role='tab', class= {active: tab == 'pick'}).user-profile-nav-item
-                            | 捡到的卡
-                            span.counter= count.pick
-                        a(href='/user?tab=lose', role='tab', class= {active: tab == 'lose'}).user-profile-nav-item
-                            | 丢失的卡
-                            span.counter= count.lose
-                    if(!tab || tab == 'default' || tab == 'pick' || tab == 'lose')
-                        .user-profile-cards-list#user-profile-cards
-                        .user-profile-cards-list-refresher#user-profile-cards-refresher
-                            .layout
-                                button.btn-getmore#refresher-btn(onclick="getMoreReports()") 载入更多
-                            .loading-sign#loadingSign
+    .container.user-center-layout
+        .row
+            .col-sm-3.col-xs-12.user-info-sidebar.findcards-sidebar
+                .name-card
+                    h2.name
+                        span#user_name #{user.name}
+                        a#name_change_sign(type='button',onclick="nameChange()", href='#')
+                            span.glyphicon.glyphicon-pencil
+                            | 修改名字
+                    #user_name_placeholder
+                    h3.username= user.username
+                .info-card
+                    p.join-time 加入于 #{joinDate}
+                .sidebar-footer.findcards-footer.hidden-xs
+                    p &copy;#{year} We <span class="glyphicon glyphicon-heart"></span> findCards. <br> Makes a better world. <br> <a href="/policies/#privacy-policy"> 隐私权</a> <a href="/policies/#terms"> 条款 </a> <a href="/policies/#exemption"> 免责声明 </a>
+
+            .col-sm-9.com-xs-12.user-profile-card
+                nav.user-profile-nav
+                    a(href='/user', role='tab', class= {active: (!tab || tab == 'default')}).user-profile-nav-item
+                        | 全部记录
+                        span.counter= count.total
+                    a(href='/user?tab=pick', role='tab', class= {active: tab == 'pick'}).user-profile-nav-item
+                        | 捡到的卡
+                        span.counter= count.pick
+                    a(href='/user?tab=lose', role='tab', class= {active: tab == 'lose'}).user-profile-nav-item
+                        | 丢失的卡
+                        span.counter= count.lose
+                if(!tab || tab == 'default' || tab == 'pick' || tab == 'lose')
+                    .user-profile-cards-list#user-profile-cards
+                    .user-profile-cards-list-refresher#user-profile-cards-refresher
+                        .layout
+                            button.btn-getmore#refresher-btn(onclick="getMoreReports()") 载入更多
+                        .loading-sign#loadingSign
 
 block script
     script#user-profile-card-template(type="text/x-custom-template")
@@ -59,6 +61,7 @@ block script
         .text
             p 正在载入
     script#userid(type='text')= user._id
+    script#_user_name(type='text')= user.name
     script#name-changer-template(type = "text/x-custom-template")
         .input-group
             input.name_changer#name_changer.form-control(value=user.name, onblur="nameChangeSubmit()", maxlength="25")
@@ -108,6 +111,7 @@ block script
                         $("#name_change_sign").removeClass("hidden");
                         document.getElementById('user-profile-cards').innerHTML = document.getElementById('user-profile-cards').innerHTML.replace(reg, new_name);
                         document.getElementById('name-changer-template').innerHTML = document.getElementById('name-changer-template').innerHTML.replace(reg, new_name);
+                        document.getElementById('_user_name').innerHTML = document.getElementById('_user_name').innerHTML.replace(reg, new_name);
                         document.title = document.title.replace(reg, new_name);
                     } else {
                         window.location.reload();

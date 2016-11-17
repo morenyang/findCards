@@ -72,7 +72,7 @@
   transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1) $time-waiting, transform 1s cubic-bezier(0.165, 0.84, 0.44, 1) $time-waiting
   opacity: 1
 
-// private
+// index_private
 .findcards-index
   .ready
     opacity: 0
@@ -97,3 +97,12 @@
   .findcards-footer
     @media screen and (min-width: 768px)
       margin-top: 30px
+
+.index_view_page
+  height: 100vh
+  .findcards-footer
+    position: absolute
+    display: block
+    width: 100%
+    left: 0
+    bottom: 30px

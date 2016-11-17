@@ -11,7 +11,7 @@ var listSize = 10; // 每页条目数量
 
 router.get('/', function (req, res) {
     // User info
-    var joinDate = new Date(req.session.user.meta.createAt).toDateString();
+    var joinDate = new Date(req.session.user.meta.createAt).toLocaleDateString();
     var count = {total: 0, pick: 0, lose: 0};
 
     Card.countUserReports(req.session.user._id, function (err, counts) {
@@ -29,7 +29,8 @@ router.get('/', function (req, res) {
                     title: req.session.user.name + ' 个人中心 - findCards',
                     joinDate: joinDate,
                     tab: tab,
-                    count: count
+                    count: count,
+                    pageType: 'findcards-user-center'
                 });
             });
         });

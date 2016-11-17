@@ -32,7 +32,7 @@ router.use(function (req, res, next) {
 });
 
 router.get('/', function (req, res) {
-    res.render('report-guide');
+    res.render('report-guide', {title: '选择一项以继续'});
 });
 
 router.get('/pick', function (req, res) {

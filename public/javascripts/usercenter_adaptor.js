@@ -2,6 +2,7 @@
  * Created by MorenYang on 2016/11/13.
  */
 var uid = document.getElementById("userid").innerHTML;
+var uname = document.getElementById("_user_name").innerHTML;
 var pageSize = 0;
 var page = 0;
 var getQueryString = function (name) {
@@ -62,7 +63,7 @@ var itemListWriter = function (items) {
     $.each(items, function (index, item) {
         var user_report_type = (item.picker.user == uid ? 0 : 1);
         var user_report_at = user_report_type == 0 ? item.picker.reportAt : item.loser.reportAt;
-        user_report_at = new Date(user_report_at).toDateString();
+        user_report_at = new Date(user_report_at).toLocaleDateString();
         var item_content = content_template;
         item_content = item_content
             .replace(/%user-report-type%/g, user_report_type_value[user_report_type])
@@ -88,18 +89,24 @@ var itemListWriter = function (items) {
         item_content = item_content
             .replace(/%reportid%/g, item.reportId)
             .replace(/%reportstatus%/, item.valid ? item.matched ? '已匹配' : '未匹配' : '已失效')
-            .replace(/%update-at%/, new Date(item.meta.updateAt).toDateString());
+            .replace(/%update-at%/, new Date(item.meta.updateAt).toLocaleDateString());
         var pickername = '', losername = '';
         $.ajaxSettings.async = false;
         if (item.picker.user) {
-            $.getJSON('/api/user/queryUserName?uid=' + item.picker.user, function (response) {
-                pickername = response.name;
-            });
+            if (item.picker.user == uid) {
+                pickername = uname;
+            } else
+                $.getJSON('/api/user/queryUserName?uid=' + item.picker.user, function (response) {
+                    pickername = response.name;
+                });
         }
         if (item.loser.user) {
-            $.getJSON('/api/user/queryUserName?uid=' + item.loser.user, function (response) {
-                losername = response.name;
-            });
+            if (item.loser.user == uid) {
+                losername = uname
+            } else
+                $.getJSON('/api/user/queryUserName?uid=' + item.loser.user, function (response) {
+                    losername = response.name;
+                });
         }
         item_content = item_content
             .replace(/%picker-name%/g, pickername)
