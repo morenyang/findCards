@@ -6,6 +6,16 @@ var router = express.Router();
 var Card = require('../models/card');
 var User = require('../models/user');
 
+router.use(function (req, res, next) {
+    if (!req.session.user) {
+        return res.redirect('/login');
+    } else if (!req.session.user.activation) {
+        return res.redirect('/auth/activation')
+    } else {
+        next();
+    }
+});
+
 router.get('/:reportid', function (req, res) {
     var reportid = parseInt(req.params.reportid);
     Card.findOne({reportId: reportid}, function (err, card) {

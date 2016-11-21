@@ -4,6 +4,7 @@
 var cardNoReg = /^(\d{16}|\d{19})$/;
 var phoneReg = /^(\d{6}|\d{11})$/;
 var idReg = /^(\d{5}|\d{10}|\d{12})$/;
+
 $('#cardno').blur(function () {
     this.value = this.value.replace(/[^0-9]*$/g, '');
     this.onkeyup();
@@ -13,7 +14,6 @@ $('#cardno').blur(function () {
         $(this).addClass('input-complete');
     } else {
         $(this).addClass('input-error');
-        $(this).addClass('shake');
     }
 }).focus(function () {
     $(this).removeClass('input-error');

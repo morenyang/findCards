@@ -16,6 +16,18 @@ body.findcards-index
                     a.btn.guide-btn.ready(href='/report') 开始吧
                         span.btn-icon-larger &raquo;
         include ../public/footer
+    .index-user-info-bar
+        .container
+            .layout
+                if(!user)
+                    h2.user-info-bar-title 登录到findCards
+                    p.user-info-bar-describe 登录到findCards，获取更多你在findCards中的信息
+                    .user-info-bar-btn-bar
+                    a(href='/login', type='button').user-info-bar-btn 登录
+                        span.btn-icon-larger &raquo;
+                else
+                    h2.user-info-bar-title.small= user.name
+                        span.title-desc.title-desc-username= user.username
 
     script(src="/javascripts/jquery.min.js")
     script(src="/javascripts/bootstrap.min.js")

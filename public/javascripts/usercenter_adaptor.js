@@ -96,7 +96,7 @@ var itemListWriter = function (items) {
             if (item.picker.user == uid) {
                 pickername = uname;
             } else
-                $.getJSON('/api/user/queryUserName?uid=' + item.picker.user, function (response) {
+                $.getJSON('/api/public/queryUserName?uid=' + item.picker.user, function (response) {
                     pickername = response.name;
                 });
         }
@@ -104,7 +104,7 @@ var itemListWriter = function (items) {
             if (item.loser.user == uid) {
                 losername = uname
             } else
-                $.getJSON('/api/user/queryUserName?uid=' + item.loser.user, function (response) {
+                $.getJSON('/api/public/queryUserName?uid=' + item.loser.user, function (response) {
                     losername = response.name;
                 });
         }

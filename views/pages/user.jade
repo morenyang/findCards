@@ -96,7 +96,7 @@ block script
             }
             var uid = document.getElementById("userid").innerHTML;
             $.ajax({
-                url: '/api/user/changeUserName?username=#{user.username}',
+                url: '/api/private/user/changeUserName?username=#{user.username}',
                 type: 'POST',
                 dataType: 'json',
                 data: {uid: uid, name: new_name},

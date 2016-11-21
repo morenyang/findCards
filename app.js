@@ -38,7 +38,6 @@ app.use(require('node-sass-middleware')({
 app.use(express.static(path.join(__dirname, 'public')));
 
 // session
-
 app.use(session({
     secret: 'findCards',
     resave: false,

@@ -9,6 +9,16 @@ var _ = require('underscore');
 
 var listSize = 10; // 每页条目数量
 
+router.use(function (req, res, next) {
+    if (!req.session.user) {
+        return res.redirect('/login');
+    } else if (!req.session.user.activation) {
+        return res.redirect('/auth/activation')
+    } else {
+        next();
+    }
+});
+
 router.get('/', function (req, res) {
     // User info
     var joinDate = new Date(req.session.user.meta.createAt).toLocaleDateString();
@@ -101,33 +111,6 @@ router.get('/queryCards', function (req, res) {
     }
 });
 
-router.get('/queryUserName', function (req, res) {
-    var uid = req.query.uid;
-    User.findById(uid, function (err, user) {
-        if (err) console.log(err);
-        res.json({name: user.name});
-    });
-});
 
-router.post('/changeUserName', function (req, res) {
-    var username = req.query.username;
-    if (username != req.session.user.username)
-        return res.json({status: false});
-    var uid = req.body.uid;
-    var name = req.body.name;
-    User.findById(uid, function (err, user) {
-        if (user.username != username)
-            return res.json({status: false});
-        else {
-            var _user = _.extend(user, {name: name});
-            _user.save(function (err, user) {
-                if (err) console.log(err);
-                req.session.user = user;
-                req.app.locals.user = user;
-                return res.json({status: true});
-            })
-        }
-    })
-});
 
 module.exports = router;

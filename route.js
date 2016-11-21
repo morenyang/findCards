@@ -10,35 +10,28 @@ var report = require('./routes/report');
 var result = require('./routes/result');
 var user = require('./routes/user');
 var card = require('./routes/card');
-var policies = require('./routes/policies')
+var policies = require('./routes/policies');
+var publicApi = require('./routes/publicApis');
+var userPrivateApi = require('./routes/userPrivateApis');
 
 var route = function (app) {
     app.use(function (req, res, next) {
         if (req.session.user) {
             app.locals.user = req.session.user;
             app.locals.year = parseInt(new Date().getFullYear());
-        }else {
+        } else {
             app.locals.user = null;
         }
         next();
     });
 
+    app.use('/api/public', publicApi);
+    app.use('/api/private/user', userPrivateApi);
     app.use('/', routes);
     app.use('/policies', policies);
     app.use('/users', users);
     app.use('/login', auth);
     app.use('/auth', auth);
-
-    // require sign in and activation
-    app.use(function (req, res, next) {
-        if (!req.session.user) {
-            return res.redirect('/login');
-        } else if (!req.session.user.activation) {
-            return res.redirect('/auth/activation')
-        } else {
-            next();
-        }
-    });
 
     app.use('/report', report);
     app.use('/report-guide', report);

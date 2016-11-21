@@ -9,6 +9,16 @@ var Counter = require('../models/counter');
 var _ = require('underscore');
 
 router.use(function (req, res, next) {
+    if (!req.session.user) {
+        return res.redirect('/login');
+    } else if (!req.session.user.activation) {
+        return res.redirect('/auth/activation')
+    } else {
+        next();
+    }
+});
+
+router.use(function (req, res, next) {
     // 初始化counter
     Counter.findOne({counterId: 1}, function (err, counter) {
         if (counter == null) {
@@ -191,12 +201,5 @@ router.post('/pick/submit', function (req, res) {
         }
     });
 });
-
-router.get('/fetch', function (req, res) {
-    Card.fetchLastOne(function (err, cards) {
-        res.send(cards);
-    })
-});
-
 
 module.exports = router;

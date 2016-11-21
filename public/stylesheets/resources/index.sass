@@ -106,3 +106,61 @@
     width: 100%
     left: 0
     bottom: 30px
+
+.index-user-info-bar
+  min-height: 350px
+  background: #1f1f1f
+  color: #fdfdfd
+  padding: 30px 0
+  .layout
+    padding: 25px 80px
+    @media screen and (max-width: 767px)
+      padding: 25px 0
+  a
+    color: #fdfdfd
+  .user-info-bar-title
+    font-weight: 400
+    font-size: 52px
+    @media screen and (max-width: 767px)
+      font-size: 36px
+    &.small
+      font-size: 38px
+      @media screen and (max-width: 767px)
+        font-size: 28px
+      .title-desc
+        font-size: .5em
+        font-weight: 200
+        &.title-desc-username
+          &:before
+            content: '/'
+            margin: 0 5px 0 10px
+
+  .user-info-bar-describe
+    font-weight: 300
+    font-size: 30px
+    color: #ddd
+    @media screen and (max-width: 767px)
+      font-size: 22px
+  .user-info-bar-btn-bar
+    margin: 50px 0
+  .user-info-bar-btn
+    margin: 0
+    border: 2px solid #ddd
+    padding: 12px 24px 10px
+    color: #ddd
+    font-size: 18px
+    line-height: 24px
+    vertical-align: middle
+    @extend .btn-template
+    @extend .transform-template
+    text-decoration: none
+    &:hover
+      border-color: $theme-blue
+      background: $theme-blue
+      color: white
+    .btn-icon-larger
+      margin-left: 5px
+      font-size: 24px
+      line-height: 24px
+      vertical-align: middle
+
