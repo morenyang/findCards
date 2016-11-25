@@ -12,24 +12,25 @@ body.findcards-login
                     a.banner-link(href='/')
                         h1 findCards
                     h3.banner-text-small 使用你的学号和教务系统密码验证身份
-            .alert-card#alert-card
-                if alert
-                    .alert.alert-danger.alert-dismissible(role="alert") #{alert}
-                        button.close(type="button" data-dismiss="alert")
-                            span(alert-hidden="true") &times;
-                else
-            .login-card
-                .input-card
-                    form#form-login(method="POST", action="/auth/login/submit" onsubmit='return formSubmit()')
-                        label(for='username') 用户名
-                        if(username)
-                            input.form-control#username(name='username', tabindex='1', type='text', value='#{username}')
-                        else
-                            input.form-control#username(name='username', tabindex='1', type='text')
-                        label(for='password') 密码
-                            a.table-link(href="http://es.bnuz.edu.cn/") 忘记密码?
-                        input.form-control#password(name='password', tabindex='2', type='password')
-                        button.btn.btn-success.signin-btn#btn-submit(type='submit') 登录
+            .login-place
+                .alert-card#alert-card
+                    if alert
+                        .alert.alert-danger.alert-dismissible(role="alert") #{alert}
+                            button.close(type="button" data-dismiss="alert")
+                                span(alert-hidden="true") &times;
+                    else
+                form#form-login(method="POST", action="/auth/login/submit" onsubmit='return formSubmit()')
+                    .login-card
+                        .input-card
+                            label(for='username') 用户名
+                            if(username)
+                                input.form-control#username(name='username', tabindex='1', type='text', value='#{username}')
+                            else
+                                input.form-control#username(name='username', tabindex='1', type='text')
+                            label(for='password') 密码
+                                a.table-link(href="http://es.bnuz.edu.cn/") 忘记密码?
+                            input.form-control#password(name='password', tabindex='2', type='password')
+                            button.btn.btn-success.signin-btn#btn-submit(type='submit') 登录
 
     include ../public/footer
     script#alert-template(type="text/x-custom-template")

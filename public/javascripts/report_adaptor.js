@@ -48,7 +48,7 @@ $('#studentno').blur(function () {
     $(this).removeClass('input-error');
     $(this).removeClass('input-complete');
 });
-$('.input-card > form > input').not($('#cardno')).not($('#phone')).not($('#studentno')).blur(function () {
+$('.input-card > .form-bar > form > .input-bar > input').not($('#cardno')).not($('#phone')).not($('#studentno')).blur(function () {
     if (this.value.length == 0) {
         $(this).removeClass('input-complete').removeClass('input-error');
     } else {
