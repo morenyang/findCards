@@ -2,6 +2,11 @@ extends ../layout
 block content
     .container.user-center-layout
         .row
+            .tab_indicator.no_display.navbar-fixed-top#tab_indicator(class= {
+                normal: (!tab || tab == 'default'),
+                pick: tab == 'pick',
+                lose: tab == 'lose'
+            })
             .col-sm-3.col-xs-12.user-info-sidebar.findcards-sidebar
                 .name-card
                     h2.name
@@ -15,16 +20,15 @@ block content
                     p.join-time 加入于 #{joinDate}
                 .sidebar-footer.findcards-footer.hidden-xs
                     p &copy;#{year} We <span class="glyphicon glyphicon-heart"></span> findCards. <br> Makes a better world. <br> <a href="/policies/#privacy-policy"> 隐私权</a> <a href="/policies/#terms"> 条款 </a> <a href="/policies/#exemption"> 免责声明 </a>
-
             .col-sm-9.com-xs-12.user-profile-card
-                nav.user-profile-nav
+                nav.user-profile-nav#user-profile-nav
                     a(href='/user', role='tab', class= {active: (!tab || tab == 'default')}).user-profile-nav-item
                         | 全部记录
                         span.counter= count.total
-                    a(href='/user?tab=pick', role='tab', class= {active: tab == 'pick'}).user-profile-nav-item
+                    a.pick(href='/user?tab=pick', role='tab', class= {active: tab == 'pick'}).user-profile-nav-item
                         | 捡到的卡
                         span.counter= count.pick
-                    a(href='/user?tab=lose', role='tab', class= {active: tab == 'lose'}).user-profile-nav-item
+                    a.lose(href='/user?tab=lose', role='tab', class= {active: tab == 'lose'}).user-profile-nav-item
                         | 丢失的卡
                         span.counter= count.lose
                 if(!tab || tab == 'default' || tab == 'pick' || tab == 'lose')
@@ -37,14 +41,14 @@ block content
 block script
     script#user-profile-card-template(type="text/x-custom-template")
         .user-profile-cards-list#user-profile-cards
-            .item-card.row(id='report_%reportid%' ,fc-reportid='%reportid%')
+            .item-card.row(class="status-%class-for-status%",id='report_%reportid%' ,fc-reportid='%reportid%')
                 .col-sm-4.col-sm-push-8.col-xs-12.item-card-right
                     .layout
                         h3.item-card-reportid %reportid%
                         h2.item-card-reportstatus %reportstatus%
                 .col-sm-8.col-sm-pull-4.col-xs-12.item-card-left
                     a(href='/card/%reportid%').item-card-title-bar
-                        span.type %user-report-type%
+                        span.type(class="%class-for-user-report-type%") %user-report-type%
                         span.date %user-report-at%
                     .item-card-info-bar
                         h4
@@ -118,6 +122,19 @@ block script
                     }
                 }
             })
+        };
+        window.onscroll = function () {
+            var tab_nav = document.getElementById('user-profile-nav');
+            if ($("#tab_indicator").hasClass('no_display')) {
+                if ((tab_nav.getBoundingClientRect().top + tab_nav.clientHeight - 2) < 0) {
+                    $("#tab_indicator").removeClass('no_display');
+                }
+            } else {
+                if ((tab_nav.getBoundingClientRect().top + tab_nav.clientHeight - 2) > 0) {
+                    $("#tab_indicator").addClass('no_display');
+                }
+            }
+
         };
 
 

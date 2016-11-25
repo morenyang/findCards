@@ -46,11 +46,11 @@ router.get('/', function (req, res) {
 });
 
 router.get('/pick', function (req, res) {
-    res.render('report', {title: '填入信息 拾卡 - findCards', type: 'pick', interface: '/report/pick/submit'});
+    res.render('report', {title: '填入信息 拾卡 - findCards', type: 'pick', interface: '/report/pick/submit', pageType: 'findcards-report'});
 });
 
 router.get('/lose', function (req, res) {
-    res.render('report', {title: '填入信息 丢卡 - findCards', type: 'lose', interface: '/report/lose/submit'});
+    res.render('report', {title: '填入信息 丢卡 - findCards', type: 'lose', interface: '/report/lose/submit',pageType: 'findcards-report'});
 });
 
 router.post('/lose/submit', function (req, res) {

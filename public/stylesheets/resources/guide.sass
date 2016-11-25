@@ -20,7 +20,7 @@
       @media screen and (max-width: 767px)
         font-size: 30px
     .explain
-      color: rgba(0,0,0,.38)
+      color: rgba(0, 0, 0, .38)
       font-size: 50%
       margin-left: 10px
       &:before
@@ -73,8 +73,55 @@
             font-size: 56px
 
 .findcards-report, .findcards-result
+  @media screen and (max-width: 767px)
+    .findcards-navbar, .page-guide-bar
+      background: #fff
+    .findcards-navbar
+      margin-bottom: 0
+    .page-guide-bar
+      margin: 0 -15px
+      padding: 25px 15px 5px
+      .title
+        margin-bottom: 10px
   .input-card
+    .form-bar
+      @media screen and (max-width: 767px)
+        margin: 0 -5px
+        padding: 0 5px
     form
+      @media screen and (max-width: 767px)
+        margin-top: 5px
+      .input-bar
+        @media screen and (max-width: 767px)
+          background: #fff
+          border: 1px solid rgba(0, 0, 0, 0.06)
+          box-shadow: 0 1.5px 2.5px 0 rgba(0, 0, 0, 0.26)
+          border-radius: 1px
+          padding: 0 15px 5px
+          margin-bottom: 15px
+        .title-bar
+          display: none !important
+        @media screen and (max-width: 767px)
+          .title-bar
+            display: block !important
+            padding: 10px 0 10px 11px
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06)
+            border-left: 4px solid rgba(0, 0, 0, 0)
+            margin: 0 -15px 10px -16px
+            .title
+              font-size: 18px !important
+              font-weight: 200 !important
+              line-height: 20px !important
+              vertical-align: middle
+              margin: 0
+              color: rgba(0, 0, 0, .56)
+            &.normal
+              border-left-color: $theme-blue-light
+            &.pick
+              border-left-color: $pick-color
+            &.lose
+              border-left-color: $lose-color
+
       input, button
         border-radius: 2px
         height: 40px
@@ -108,9 +155,14 @@
       button
         padding: 8px 18px
         border-left: 0
+  .alert-bar
+    margin: 0 -5px
   .alert-card
     width: 100%
     display: table
+    @media screen and (max-width: 767px)
+      margin: 10px 0 -10px
+      width: 100%
     &.notice
       margin: 10px 0 20px
       .alert
@@ -121,6 +173,8 @@
       padding: 8px 10px
       border-radius: 2px
       margin-bottom: 10px
+      @media screen and (max-width: 767px)
+        margin-bottom: 15px
       .alert-title
         font-weight: 600
         font-size: 16px
@@ -136,7 +190,11 @@
     @media screen and (max-width: 767px)
       padding: 10px 15px
 
-.findcards-result
+.findcards-result, .findcards-report
+  @media screen and (max-width: 767px)
+    background: #fafafa
+    .card-view
+      border-bottom: 1px solid #ccc
   .sidebar-card
     padding-top: 50px
     @media screen and (max-width: 767px)
@@ -246,6 +304,8 @@
         line-height: 22px
         margin-left: 5px
         padding: 6px 20px
+        @media screen and (max-width: 767px)
+          width: 100% !important
         &:hover
           box-shadow: none
           -webkit-box-shadow: none
@@ -255,7 +315,58 @@
           display: block
           margin-left: 0
 
+      .info-card-item
+        @media screen and (max-width: 767px)
+          background: #fff
+          margin: 15px -5px
+          border: 1px solid rgba(0, 0, 0, 0.06)
+          box-shadow: 0 1.5px 2.5px 0 rgba(0, 0, 0, 0.26)
+          border-radius: 1px
+          .title-bar
+            padding: 10px 0 10px 11px
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06)
+            border-left: 4px solid rgba(0, 0, 0, 0)
+            margin: 0 0 0 -1px
+            .title
+              font-size: 20px
+              line-height: 22px
+              vertical-align: middle
+              color: rgba(0, 0, 0, .48)
+            &.normal
+              border-left-color: $theme-blue-light
+            &.pick
+              border-left-color: $pick-color
+            &.lose
+              border-left-color: $lose-color
+            &.small .title
+              font-size: 18px
+              font-weight: 200
+              line-height: 20px
+              vertical-align: middle
+          .info-content
+            padding: 10px 15px
+      .info-card-btn
+        @media screen and (max-width: 767px)
+          margin: 0 -5px
+
+.findcards-report
+  @media screen and (max-width: 767px)
+    .page-guide-bar
+      margin: 0 -15px 10px
+      padding: 15px 15px 0
+      box-shadow: 0 1px 1px rgba(0,0,0,0.06)
+      border-bottom: 1px solid #ccc
+      .title
+        border-bottom: none !important
+        margin-bottom: 0
+
+
 .card-view
+  @media screen and (max-width: 767px)
+    background: #fff
+    margin: -5px -15px -10px
+    padding: 5px 15px 20px
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06)
   .card
     border: 2px solid rgba(0, 0, 0, .36)
     border-radius: 18px

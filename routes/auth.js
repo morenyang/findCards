@@ -51,7 +51,7 @@ router.post('/login/submit', function (req, res, next) {
                 if (isMatched) {
                     req.session.user = user;
                     req.app.locals.user = user;
-                    return res.redirect('/users');
+                    return res.redirect('/');
                 } else {
                     return res.render('login', {title: '登录到findCards', alert: '用户名或密码错误！', username: req.body.username})
                 }
@@ -62,7 +62,7 @@ router.post('/login/submit', function (req, res, next) {
                     req.session.user = user;
                     req.app.locals.user = user;
                     if (user.activation) {
-                        return res.redirect('/report');
+                        return res.redirect('/');
                     } else {
                         return res.redirect('/auth/activation');
                     }
@@ -79,7 +79,7 @@ router.post('/login/submit', function (req, res, next) {
                         req.session.user = user;
                         req.app.locals.user = user;
                         if (user.activation) {
-                            return res.redirect('/report');
+                            return res.redirect('/');
                         } else {
                             return res.redirect('auth/activation');
                         }
@@ -111,7 +111,7 @@ router.post('/activation/submit', function (req, res) {
             if (err) console.log(err);
             req.session.user = user;
             req.app.locals.user = user;
-            return res.redirect('/report');
+            return res.redirect('/');
         })
     })
 });

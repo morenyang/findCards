@@ -18,6 +18,16 @@ $time: 0.15s
   -webkit-transition: all $time ease-in 0s
   -moz-transition: all $time ease-in 0s
 
-$theme-blue: #3275c7
-$theme-blue-light: #4683ea
+@mixin transform-template($time)
+  transition: all $time ease-in .05s
+  -webkit-transition: all $time ease-in .05s
+  -moz-transition: all $time ease-in .05s
 
+$theme-blue: #1976D2
+$theme-blue-light: #1E88E5
+
+$pick-color: #4FC3F7
+$lose-color: #F06292
+$matched-color: #4DB6AC
+$unmatched-color: #FFCA28
+$disabled-color: #90A4AE

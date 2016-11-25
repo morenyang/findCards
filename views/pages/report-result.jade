@@ -9,12 +9,12 @@ block content
                     | 在系统中查找到以下记录
                 else
                     | 没有找到匹配的记录
-        .row.findcards-result
+        .row
             .col-sm-8.col-xs-12.col-sm-push-4.sidebar-card
                 .card-view
                     .card
                         .card-info
-                            .ci-title
+                            .ci-title(class= cardStatus)
                                 span findCards
                             .ci-cardno
                                 span#cardview-no= card.cardNo
@@ -25,37 +25,40 @@ block content
                                 span.title#ci-sno-title 学号：
                                 span#cardview-sno= card.studentNo
             .col-sm-4.col-xs-12.col-sm-pull-8.info-side-bar
-                .alert-card
-                    if(result)
-                        .alert.alert-success
-                            | 你可以通过对方留下的信息与对方取得联系。<br>你可以在<strong>个人中心</strong>随时查看这张卡的当前匹配状态
-                    else
-                        .alert.alert-info
-                            .alert-title 未在系统中找到与你匹配的记录
-                            | 系统已经保存了你提交的信息。如果有人在你之后提交了与你相匹配的信息，系统将向对方提供你留下的联系方式。
-                        .alert.alert-success
-                            | 你可以在<strong>个人中心</strong>随时查看这张卡的当前匹配状态
-                .info-card
-                    .title-bar
+                .alert-bar
+                    .alert-card
                         if(result)
-                            h2.title 以下是对方留下的信息
+                            .alert.alert-success
+                                | 你可以通过对方留下的信息与对方取得联系。<br>你可以在<strong>个人中心</strong>随时查看这张卡的当前匹配状态
                         else
-                            h2.title 以下是你提交的信息
+                            .alert.alert-info
+                                .alert-title 未在系统中找到与你匹配的记录
+                                | 系统已经保存了你提交的信息。如果有人在你之后提交了与你相匹配的信息，系统将向对方提供你留下的联系方式。
+                            .alert.alert-success
+                                | 你可以在<strong>个人中心</strong>随时查看这张卡的当前匹配状态
+                .info-card
+                    .info-card-item
+                        .title-bar(class= infoCardType)
+                            if(result)
+                                h2.title 以下是对方留下的信息
+                            else
+                                h2.title 以下是你提交的信息
 
-                    if(infoType == 'your')
-                        .info-content.your-info
-                            p#cardno= report.cardNo
-                            p#studentname= report.studentName
-                            p#studentno= report.studentNo
-                            p#name= report.reporterName
-                            p#phone= report.phone
-                            p#wechat= report.weChat
-                    else
-                        .info-content.other-info
-                            p#cardno= report.cardNo
-                            p#studentname= report.studentName
-                            p#studentno= report.studentNo
-                            p#name= report.reporterName
-                            p#phone= report.phone
-                            p#wechat= report.weChat
-                    a.btn.next-btn#btn-next(type='button', href='/user') 完成
+                        if(infoType == 'your')
+                            .info-content.your-info
+                                p#cardno= report.cardNo
+                                p#studentname= report.studentName
+                                p#studentno= report.studentNo
+                                p#name= report.reporterName
+                                p#phone= report.phone
+                                p#wechat= report.weChat
+                        else
+                            .info-content.other-info
+                                p#cardno= report.cardNo
+                                p#studentname= report.studentName
+                                p#studentno= report.studentNo
+                                p#name= report.reporterName
+                                p#phone= report.phone
+                                p#wechat= report.weChat
+                    .info-card-btn
+                        a.btn.next-btn#btn-next(type='button', href='/user') 完成

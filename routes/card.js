@@ -37,11 +37,21 @@ router.get('/:reportid', function (req, res) {
                     if (card.loser.user) {
                         getUserInfo(card.loser, function (loser) {
                             var loser = loser;
-                            return res.render('card', {report: report, picker: picker, loser: loser});
+                            return res.render('card', {
+                                pageType: 'findcards-result',
+                                report: report,
+                                picker: picker,
+                                loser: loser
+                            });
                         })
                     } else {
                         var loser = {reporterName: "", phone: "", weChat: ""};
-                        return res.render('card', {report: report, picker: picker, loser: loser});
+                        return res.render('card', {
+                            pageType: 'findcards-result',
+                            report: report,
+                            picker: picker,
+                            loser: loser
+                        });
                     }
                 });
             } else {
@@ -49,11 +59,21 @@ router.get('/:reportid', function (req, res) {
                 if (card.loser.user) {
                     getUserInfo(card.loser, function (loser) {
                         var loser = loser;
-                        return res.render('card', {report: report, picker: picker, loser: loser});
+                        return res.render('card', {
+                            pageType: 'findcards-result',
+                            report: report,
+                            picker: picker,
+                            loser: loser
+                        });
                     })
                 } else {
                     var loser = {reporterName: "", phone: "", weChat: ""};
-                    return res.render('card', {report: report, picker: picker, loser: loser});
+                    return res.render('card', {
+                        pageType: 'findcards-result',
+                        report: report,
+                        picker: picker,
+                        loser: loser
+                    });
                 }
             }
         }

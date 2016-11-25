@@ -34,6 +34,7 @@ router.get('/:type/:reportId', function (req, res) {
                     };
                     res.render('report-result', {
                         title: '在系统中找到以下记录 - findCards',
+                        pageType: 'findcards-result',
                         result: true,
                         card: {
                             cardNo: card.cardNo.slice(0, 6) + ' ' + card.cardNo.slice(6, card.cardNo.length),
@@ -41,11 +42,13 @@ router.get('/:type/:reportId', function (req, res) {
                             studentName: card.studentName
                         },
                         report: report,
-                        infoType: 'other'
+                        infoType: 'other',
+                        infoCardType: 'lose',
+                        cardStatus: 'matched'
                     });
                 })
             } else {
-                User.findById(card.loser.tiuser, function (err, user) {
+                User.findById(card.loser.user, function (err, user) {
                     var report = {
                         cardNo: card.cardNo,
                         studentName: card.studentName,
@@ -56,6 +59,7 @@ router.get('/:type/:reportId', function (req, res) {
                     };
                     res.render('report-result', {
                         title: '在系统中找到以下记录 - findCards',
+                        pageType: 'findcards-result',
                         result: true,
                         card: {
                             cardNo: card.cardNo.slice(0, 6) + ' ' + card.cardNo.slice(6, card.cardNo.length),
@@ -63,7 +67,9 @@ router.get('/:type/:reportId', function (req, res) {
                             studentName: card.studentName
                         },
                         report: report,
-                        infoType: 'other'
+                        infoType: 'other',
+                        infoCardType: 'pick',
+                        cardStatus: 'matched'
                     });
                 })
             }
@@ -80,6 +86,7 @@ router.get('/:type/:reportId', function (req, res) {
                     };
                     res.render('report-result', {
                         title: '未找到匹配记录 - findCards',
+                        pageType: 'findcards-result',
                         result: false,
                         card: {
                             cardNo: card.cardNo.slice(0, 6) + ' ' + card.cardNo.slice(6, card.cardNo.length),
@@ -87,7 +94,9 @@ router.get('/:type/:reportId', function (req, res) {
                             studentName: card.studentName
                         },
                         report: report,
-                        infoType: 'your'
+                        infoType: 'your',
+                        infoCardType: 'pick',
+                        cardStatus: 'unmatched'
                     });
                 })
             } else {
@@ -102,6 +111,7 @@ router.get('/:type/:reportId', function (req, res) {
                     };
                     res.render('report-result', {
                         title: '未找到匹配记录 - findCards',
+                        pageType: 'findcards-result',
                         result: false,
                         card: {
                             cardNo: card.cardNo.slice(0, 6) + ' ' + card.cardNo.slice(6, card.cardNo.length),
@@ -109,7 +119,9 @@ router.get('/:type/:reportId', function (req, res) {
                             studentName: card.studentName
                         },
                         report: report,
-                        infoType: 'your'
+                        infoType: 'your',
+                        infoCardType: 'lose',
+                        cardStatus: 'unmatched'
                     });
                 })
             }

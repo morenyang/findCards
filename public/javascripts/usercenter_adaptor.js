@@ -60,6 +60,7 @@ var itemListAdaptor = function (reqPage) {
 var itemListWriter = function (items) {
     var content_template = document.getElementById('user-profile-card-template').innerHTML;
     var user_report_type_value = ['拾卡', '丢卡'];
+    var user_report_type_class = ['user-status-pick', 'user-status-lose'];
     $.each(items, function (index, item) {
         var user_report_type = (item.picker.user == uid ? 0 : 1);
         var user_report_at = user_report_type == 0 ? item.picker.reportAt : item.loser.reportAt;
@@ -88,6 +89,7 @@ var itemListWriter = function (items) {
                 .replace(/%studentno%/g, '');
         item_content = item_content
             .replace(/%reportid%/g, item.reportId)
+            .replace(/%class-for-status%/, item.valid ? item.matched ? 'matched' : 'unmatched' : 'disabled')
             .replace(/%reportstatus%/, item.valid ? item.matched ? '已匹配' : '未匹配' : '已失效')
             .replace(/%update-at%/, new Date(item.meta.updateAt).toLocaleDateString());
         var pickername = '', losername = '';
@@ -115,3 +117,4 @@ var itemListWriter = function (items) {
         $.ajaxSettings.async = true;
     })
 };
+

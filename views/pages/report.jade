@@ -3,47 +3,55 @@ block content
     .container
         .page-guide-bar
             h2.title.large#guide-bar-title 填入卡片的信息<br class='hidden-xs'>以及你的联系方式
-        .row.findcards-report
+        .row
             .input-card.col-sm-4.col-xs-12
                 .alert-card#alert-card
                     if(alert)
                         .alert.alert-danger.alert-dismissible(role="alert") #{alert}
                             button.close(type="button" data-dismiss="alert")
                                 span(alert-hidden="true") &times;
-                form#card-info(action='#{interface}', method='POST', onsubmit='return submitCheck()', onkeydown="if(event.keyCode==13)return false;")
-                    label.hidden(for='cardno') 卡号
-                    if(type == 'pick')
-                        input.form-control#cardno(name='cardno', tabindex='1', type='text', maxlength='19',placeholder='卡号，必填')
-                    else
-                        input.form-control#cardno(name='cardno', tabindex='1', type='text', maxlength='19',placeholder='卡号')
-                    label.hidden(for='studentname') 姓名
-                    input.form-control#studentname(name='studentname', tabindex='2', type='text', maxlength='25',placeholder='卡片上的姓名')
-                    label.hidden(for='studentno') 学号
-                    if(type == 'lose')
-                        input.form-control.input-complete#studentno(name='studentno', tabindex='3', type='text', maxlength='10', placeholder='卡片上的学号，必填', value='#{user.username}', readonly)
-                    else
-                        input.form-control#studentno(name='studentno', tabindex='3', type='text', maxlength='10', placeholder='卡片上的学号')
-                    label.hidden(for='phone') 你的电话
-                    input.form-control#phone(name='phone', tabindex='4', type='phone', maxlength='11',placeholder='你的电话，必填')
-                    label.hidden(for='wechat') 你的微信
-                    input.form-control#wechat(name='wechat', tabindex='5',type='text',maxlength='25' ,placeholder='你的微信')
-                    .card-message.protocol 点击提交键，代表您已阅读并同意提交键下方的注意事项、本站的服务条款以及隐私权政策。
-                    button.btn.btn-success.signin-btn#btn-submit(type='submit') 确认信息无误并提交
-                    .alert-card.notice
-                        .alert.alert-info(role='alert')
-                            .alert-title 注意！
+                .form-bar
+                    form#card-info(action='#{interface}', method='POST', onsubmit='return submitCheck()', onkeydown="if(event.keyCode==13)return false;")
+                        .input-bar
+                            .title-bar(class= type)
+                                h2.title.small
+                                    if(type == 'pick')
+                                        | 填入信息 / 拾卡
+                                    else
+                                        | 填入信息 / 丢卡
+                            label.hidden(for='cardno') 卡号
                             if(type == 'pick')
-                                | 同一个卡号或学号在同一时间内只会在系统中被<strong>记录一次</strong>，本次提交将会使系统中<strong>可能存在的</strong>之前提交过的相同卡号和学号的提交记录失效。
-                            else if (type == 'lose')
-                                | 每个账户只能提交自己名下的卡片，本次提交将会使系统中<strong>可能存在的</strong>之前提交过的相同学号的提交记录失效。
-                        if(type == 'pick')
-                            .alert.alert-success(role='alert')
-                                .alert-title 提示
-                                | 请尽量填写所有信息，以方便系统查找。
-                        else if(type == 'lose')
-                            .alert.alert-success(role='alert')
-                                .alert-title 提示
-                                | 如果忘记了自己的卡号且卡片上没有印自己的学号，可以通过手机银行APP或查询转账记录看到自己的卡号。
+                                input.form-control#cardno(name='cardno', tabindex='1', type='text', maxlength='19',placeholder='卡号，必填')
+                            else
+                                input.form-control#cardno(name='cardno', tabindex='1', type='text', maxlength='19',placeholder='卡号')
+                            label.hidden(for='studentname') 姓名
+                            input.form-control#studentname(name='studentname', tabindex='2', type='text', maxlength='25',placeholder='卡片上的姓名')
+                            label.hidden(for='studentno') 学号
+                            if(type == 'lose')
+                                input.form-control.input-complete#studentno(name='studentno', tabindex='3', type='text', maxlength='10', placeholder='卡片上的学号，必填', value='#{user.username}', readonly)
+                            else
+                                input.form-control#studentno(name='studentno', tabindex='3', type='text', maxlength='10', placeholder='卡片上的学号')
+                            label.hidden(for='phone') 你的电话
+                            input.form-control#phone(name='phone', tabindex='4', type='phone', maxlength='11',placeholder='你的电话，必填')
+                            label.hidden(for='wechat') 你的微信
+                            input.form-control#wechat(name='wechat', tabindex='5',type='text',maxlength='25' ,placeholder='你的微信')
+                        .card-message.protocol 点击提交键，代表您已阅读并同意提交键下方的注意事项、本站的服务条款以及隐私权政策。
+                        button.btn.btn-success.signin-btn#btn-submit(type='submit') 确认信息无误并提交
+                        .alert-card.notice
+                            .alert.alert-info(role='alert')
+                                .alert-title 注意！
+                                if(type == 'pick')
+                                    | 同一个卡号或学号在同一时间内只会在系统中被<strong>记录一次</strong>，本次提交将会使系统中<strong>可能存在的</strong>之前提交过的相同卡号和学号的提交记录失效。
+                                else if (type == 'lose')
+                                    | 每个账户只能提交自己名下的卡片，本次提交将会使系统中<strong>可能存在的</strong>之前提交过的相同学号的提交记录失效。
+                            if(type == 'pick')
+                                .alert.alert-success(role='alert')
+                                    .alert-title 提示
+                                    | 请尽量填写所有信息，以方便系统查找。
+                            else if(type == 'lose')
+                                .alert.alert-success(role='alert')
+                                    .alert-title 提示
+                                    | 如果忘记了自己的卡号且卡片上没有印自己的学号，可以通过手机银行APP或查询转账记录看到自己的卡号。
             .sidebar-card.col-sm-8.hidden-xs
                 .card-view
                     .card.display-hidden
