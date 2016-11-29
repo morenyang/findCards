@@ -81,7 +81,7 @@ router.post('/login/submit', function (req, res, next) {
                         if (user.activation) {
                             return res.redirect('/');
                         } else {
-                            return res.redirect('auth/activation');
+                            return res.redirect('/auth/activation');
                         }
                     })
                 } else {

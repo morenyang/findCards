@@ -50,17 +50,18 @@ UserSchema.pre('save', function (next) {
         this.meta.updateAt = Date.now()
     }
 
-    if (this.role == 0) {
+    if (user.role != 1) {
         bcrypt.genSalt(10, function (err, salt) {
             if (err) return next(err);
             bcrypt.hash(user.password, salt, function (err, hash) {
                 if (err) return next(err);
-                user.password = hash
+                user.password = hash;
+                next();
             })
         });
+    } else {
+        next();
     }
-
-    next();
 });
 
 UserSchema.methods = {

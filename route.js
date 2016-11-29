@@ -11,6 +11,7 @@ var result = require('./routes/result');
 var user = require('./routes/user');
 var card = require('./routes/card');
 var policies = require('./routes/policies');
+var admin = require('./routes/admin');
 var publicApi = require('./routes/publicApis');
 var userPrivateApi = require('./routes/userPrivateApis');
 
@@ -32,6 +33,7 @@ var route = function (app) {
     app.use('/users', users);
     app.use('/login', auth);
     app.use('/auth', auth);
+    app.use('/admin', admin);
 
     app.use('/report', report);
     app.use('/report-guide', report);
