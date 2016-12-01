@@ -89,8 +89,55 @@ CardSchema.statics = {
     fetch: function (callBack) {
         return this
             .find({})
-            .sort('reportAt')
+            .sort({'reportAt': -1})
             .exec(callBack)
+    },
+    fetchByPage: function (reqPage, listSize, callBack) {
+        return this.find({})
+            .sort({'reportAt': -1})
+            .skip((reqPage - 1) * listSize)
+            .limit(listSize)
+            .exec(callBack);
+    },
+    fetchByType: function (reportType, callBack) {
+        return this.find({reportType: reportType})
+            .sort({'reportAt': -1})
+            .exec(callBack);
+    },
+    fetchByTypeAndPage: function (reportType, reqPage, listSize, callBack) {
+        return this.find({reportType: reportType})
+            .sort({'reportAt': -1})
+            .skip((reqPage - 1) * listSize)
+            .limit(listSize)
+            .exec(callBack);
+    },
+    fetchByStatus: function (status, callBack) {
+        var query = this.find();
+        if (status == 'matched') {
+            query = query.where('matched', true);
+        } else if (status == 'unmatched') {
+            query = query.where('matched', false).where('valid', true);
+        } else {
+            query = query.where('valid', false);
+        }
+        return query
+            .sort({'reportAt': -1})
+            .exec(callBack);
+    },
+    fetchByStatusAndPage: function (status, reqPage, listSize, callBack) {
+        var query = this.find();
+        if (status == 'matched') {
+            query = query.where('matched', true);
+        } else if (status == 'unmatched') {
+            query = query.where('matched', false).where('valid', true);
+        } else {
+            query = query.where('valid', false);
+        }
+        return query
+            .sort({'reportAt': -1})
+            .skip((reqPage - 1) * listSize)
+            .limit(listSize)
+            .exec(callBack);
     },
     findById: function (id, callBack) {
         return this
