@@ -31,6 +31,7 @@ router.get('/:reportid', function (req, res) {
                 studentName: studentName,
                 reportid: reportid
             };
+            var pageTitle = '查看记录 No' + reportid + ' - findCards';
             if (card.picker.user) {
                 getUserInfo(card.picker, function (picker) {
                     var picker = picker;
@@ -41,7 +42,8 @@ router.get('/:reportid', function (req, res) {
                                 pageType: 'findcards-result',
                                 report: report,
                                 picker: picker,
-                                loser: loser
+                                loser: loser,
+                                title: pageTitle
                             });
                         })
                     } else {
@@ -50,7 +52,8 @@ router.get('/:reportid', function (req, res) {
                             pageType: 'findcards-result',
                             report: report,
                             picker: picker,
-                            loser: loser
+                            loser: loser,
+                            title: pageTitle
                         });
                     }
                 });
@@ -63,7 +66,8 @@ router.get('/:reportid', function (req, res) {
                             pageType: 'findcards-result',
                             report: report,
                             picker: picker,
-                            loser: loser
+                            loser: loser,
+                            title: pageTitle
                         });
                     })
                 } else {
@@ -72,7 +76,8 @@ router.get('/:reportid', function (req, res) {
                         pageType: 'findcards-result',
                         report: report,
                         picker: picker,
-                        loser: loser
+                        loser: loser,
+                        title: pageTitle
                     });
                 }
             }

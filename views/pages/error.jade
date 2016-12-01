@@ -1,6 +1,33 @@
 extends ../layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+    .container
+        .main-layout
+            .brand.visible-xs
+                a(href='/').brand-text findCards
+            .err-sataus-bar
+                h1.err-status= status
+                h2.err-status-content
+                    if(status == 404)
+                        | Page Not Found
+                    else if(status == 500)
+                        | Internal server error
+                    else
+                        | That’s an error
+            .message-bar
+                p.message
+                    if(status == 404)
+                        | The requested URL <span class='url'>#{url}</span> was not found on this server.
+                    else
+                        | The server encountered some problems.
+        h1.hidden= message
+        h2.hidden= error.status
+        pre.hidden#error_stack #{error.stack}
+
+block script
+    script(type='text/javascript').
+        (function () {
+            console.log('#{message}');
+            console.log('#{error.status}');
+            console.log('' + document.getElementById('error_stack').innerHTML);
+        })();

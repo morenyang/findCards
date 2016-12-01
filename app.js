@@ -12,6 +12,7 @@ var route = require('./route');
 
 // app
 var app = express();
+app.set('env', 'production');
 
 // database
 var dbpath = 'mongodb://localhost/findCards';
@@ -23,7 +24,7 @@ app.set('views', path.join(__dirname, 'views/pages'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -69,6 +70,7 @@ if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
+            title: (err.status || 500) + ' - findCards',
             message: err.message,
             error: err
         });
@@ -80,6 +82,10 @@ if (app.get('env') === 'development') {
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
+        title: (err.status || 500) + ' - findCards',
+        pageType: 'findcards-err',
+        url: req.url,
+        status: err.status,
         message: err.message,
         error: {}
     });
