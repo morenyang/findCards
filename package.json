@@ -15,7 +15,6 @@
     "express-session": "^1.14.1",
     "jade": "~1.11.0",
     "mongoose": "^4.6.5",
-    "mongoose-auto-increment": "^5.0.1",
     "morgan": "~1.7.0",
     "node-sass-middleware": "0.8.0",
     "serve-favicon": "~2.3.0",

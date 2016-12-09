@@ -17,9 +17,9 @@ var userPrivateApi = require('./routes/userPrivateApis');
 
 var route = function (app) {
     app.use(function (req, res, next) {
+        app.locals.year = parseInt(new Date().getFullYear());
         if (req.session.user) {
             app.locals.user = req.session.user;
-            app.locals.year = parseInt(new Date().getFullYear());
         } else {
             app.locals.user = null;
         }
